@@ -1,0 +1,20 @@
+diff -aurN libtxc_dxtn-1.0.0.orig/Makefile libtxc_dxtn-1.0.0/Makefile
+--- libtxc_dxtn-1.0.0.orig/Makefile	2011-04-20 19:55:30.000000000 +0200
++++ libtxc_dxtn-1.0.0/Makefile	2011-04-20 20:02:28.000000000 +0200
+@@ -5,7 +5,7 @@
+ LIB = libtxc_dxtn.so
+ 
+ $(LIB): $(OBJS)
+-	$(CC) $(LDFLAGS) -o $@ $(OBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@
+ 
+ %.o: %.c txc_dxtn.h
+ 	$(CC) $(CFLAGS) $(OPT_CFLAGS) -c -o $@ $<
+@@ -14,5 +14,5 @@
+ 	rm -f $(OBJS) $(LIB)
+ 
+ install: $(LIB)
+-	install -d $(DESTDIR)/usr/lib
+-	install -m 755 $(LIB) $(DESTDIR)/usr/lib
++	install -d $(DESTDIR)$(LIBDIR)
++	install -m 755 $(LIB) $(DESTDIR)$(LIBDIR)
